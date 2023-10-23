@@ -8,7 +8,7 @@ const lowercasecheck = document.querySelector(" #Lowercase ");
 const numbercheck = document.querySelector(" #Number ");
 const symbolsCheck = document.querySelector("#symbols");
 const indicator = document.querySelector(" [data-indicator] ");
-const generateBtn = document.querySelector(" .generateButton ");
+const generateBtn = document.querySelector(" .generateButton");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
 const symbols = '~`!@#$%^&*()_-+={[}]|:;"<,>.?/';
 
@@ -19,18 +19,22 @@ let checkCount = 0;
 handleSlider()
 
 // set strength circle color to grey
-
+setIndicator("#ccc")
 // set password length
 
 function handleSlider() {
     inputSlider.value = passwordLength;
     lenghtDisplay.innerHTML = passwordLength;
 
+    const min = inputSlider.min;
+    const max = inputSlider.max;
+    inputSlider.style.backgroundSize = ( (passwordLength - min)*100/(max - min)) + "% 100%"
 }
 
 function setIndicator(color) {
-    indicator.computedStyleMap.background = color;
+    indicator.style.background = color;
     //shadow
+    indicator.style.boxShadow = `0px 0px 12px 1px ${color}`;
 }
 
 // password generator
@@ -196,7 +200,7 @@ generateBtn.addEventListener('click', () => {
     console.log("UI adddition done");
 
     // calculation strength
-
+    calcStrength()
 });
 
 
