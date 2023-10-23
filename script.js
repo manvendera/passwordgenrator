@@ -6,7 +6,7 @@ const copyMsg = document.querySelector(" [data-copyMsg] ");
 const uppercasecheck = document.querySelector(" #Uppercase ");
 const lowercasecheck = document.querySelector(" #Lowercase ");
 const numbercheck = document.querySelector(" #Number ");
-const symbolCheck = document.querySelector(" #Symbol ");
+const symbolsCheck = document.querySelector("#symbols");
 const indicator = document.querySelector(" [data-indicator] ");
 const generateBtn = document.querySelector(" .generateButton ");
 const allCheckBox = document.querySelectorAll("input[type=checkbox]");
@@ -47,12 +47,12 @@ function generateLowerCase() {
 }
 // ascii value of captial A is 65 & Z is 90 
 function generateUpperCase() {
-    return String.fromCharCode(getRndInteger(65, 90))
+    return String.fromCharCode(getRndInteger(65, 91))
 }
 
 function generateSymbol() {
     const randNum = getRndInteger(0, symbols.length);
-    return symbols.charAt[randNum]
+    return symbols.charAt(randNum);
 }
 
 function calcStrength() {
@@ -64,7 +64,7 @@ function calcStrength() {
     if (uppercasecheck.checked) hasUpper = true;
     if (lowercasecheck.checked) hasLower = true;
     if (numbercheck.checked) hasNum = true;
-    if (symbolCheck.checked) hasSym = true;
+    if (symbolsCheck.checked) hasSym = true;
 
     if (hasUpper && hasLower && (hasNum || hasSym) && passwordLength >= 8) {
         setIndicator("#0f0");
@@ -147,7 +147,7 @@ generateBtn.addEventListener('click', () => {
     //  let's start the journy to find the new password
     console.log("Starting the Journey");
     //  remove old password 
-    password = '';
+    password = "";
 
     // let's put the stuff mentioned by checkboxes
     // if(uppercasecheck.checked){
@@ -170,11 +170,11 @@ generateBtn.addEventListener('click', () => {
         funArr.push(generateLowerCase);
     if (numbercheck.checked)
         funArr.push(generateRandomNumber);
-    if (symbolCheck.checked)
+    if(symbolsCheck.checked)
         funArr.push(generateSymbol);
     // complasury addition
 
-    for (let i = 0; i<funArr.lemgth; i++) {
+    for (let i = 0; i<funArr.length; i++) {
        password += funArr[i]();
         
     }
